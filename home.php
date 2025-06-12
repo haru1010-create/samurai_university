@@ -86,21 +86,21 @@
             <div class="home_title_sub">ニュース</div>
            <?php
            $args = array(
-            'post_type'   =>'post',
-            'category_name'  =>'news',
+            'post_type' =>'post',
+            'category_name' =>'news',
             'posts_per_page' => 3,
            );
            $posts =get_posts($args);
            ?>
 
            <!-- ループ処理 -->
-           <?php foreach($posts as $post): ?>
+           <?php foreach($posts as $post); ?>
            <?php setup_postdata($post); ?>
            <div class="news_post_small">
             <div class="news_post_meta">
               <ul>
                 <li>
-                  <a href="<?php echo get_permalink(); ?>
+                  <a href="<?php echo get_permalink(); ?>">
                    <?php echo get_the_date(); ?> 
                   </a>
                 </li>
@@ -123,51 +123,48 @@
           <div class="col-lg-6 col-md-6 col-sx-12 news_col">
             <div class="home_title">Event</div>
             <div class="home_title_sub">イベント</div>
-            <div class="news_post_small">
-              <div class="row news_post_row">
-                <div class="col-lg-3 col-md-4 col-sx-12">
-                  <div class="calendar_border">
-                    <div class="calendar_border_1">
-                      <div class="calendar_month">OCT</div>
-                      <div class="calendar_day">
-                        <span>8</span>
+           <?php
+           $args = array(
+            'post_type' =>'post',
+            'category_name' =>'event',
+            'posts_per_page' => 2,
+           );
+           $posts =get_posts($args);
+           ?>
+
+           <!-- ループ処理 -->
+           <?php foreach($posts as $post); ?>
+           <?php setup_postdata($post); ?>
+           <div class="news_post_small">
+            <div class="row news_post_row">
+             <div class="col-lg-3 col-md-4 col-sx-12">
+                    <div class="calendar_border">
+                      <div class="calendar_border_1">
+                        <div class="calendar_month">OCT</div>
+                        <div class="calendar_day">
+                          <span>8</span>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="col-lg-9 col-md-8 col-sx-12">
-                  <div class="news_post_small_title">
-                    <a href="events_detail.html">AWSハンズオンセミナー</a>
-                  </div>
-                  <div class="news_post_content">
-                    10月8日　新宿〇〇ビル8Fにて、AWSハンズオンセミナーを開催します。AWSを実際に構築してみます。参加希望者は...
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="news_post_small">
-              <div class="row news_post_row">
-                <div class="col-lg-3 col-md-4 col-sx-12">
-                  <div class="calendar_border">
-                    <div class="calendar_border_1">
-                      <div class="calendar_month">OCT</div>
-                      <div class="calendar_day">
-                        <span>15</span>
-                      </div>
+                  <div class="col-lg-9 col-md-8 col-sx-12">
+                    <div class="news_post_small_title">
+                      <a href="<?php the_permalink(); ?>">
+                        <?php the_title() ; ?>
+                      </a>
+                    </div>
+                    <div class="news_post_content">
+                      <?php 
+                        $content = wp_trim_words( get_the_content() ,  50, '...');
+                        echo $content;
+                      ?>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-9 col-md-8 col-sx-12">
-                  <div class="news_post_small_title">
-                    <a href="events_detail.html">Raspberry Piハンズオンセミナー</a>
-                  </div>
-                  <div class="news_post_content">
-                    11月15日　新宿〇〇ビル8Fにて、Raspberry
-                    Piを使った、センサーを利用した自動走行ハンズオンセミナーを開催し...
-                  </div>
-                </div>
               </div>
-            </div>
+            <?php endforeach; ?>
+            <!-- 使用した投稿データをリセット -->
+            <?php wp_reset_postdata(); ?>
           </div>
           <!-- イベントここまで -->
         </div>
