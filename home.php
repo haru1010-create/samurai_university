@@ -133,7 +133,7 @@
            ?>
 
            <!-- ループ処理 -->
-           <?php foreach($posts as $post); ?>
+           <?php foreach($posts as $post): ?>
            <?php setup_postdata($post); ?>
            <div class="news_post_small">
             <div class="row news_post_row">
