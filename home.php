@@ -84,36 +84,38 @@
           <div class="col-lg-6 col-md-6 col-sx-12 news_col">
             <div class="home_title">News</div>
             <div class="home_title_sub">ニュース</div>
-            <div class="news_post_small">
-              <div class="news_post_meta">
-                <ul>
-                  <li><a href="news_detail.html">2022/05/02</a></li>
-                </ul>
-              </div>
-              <div class="news_post_small_title">
-                <a href="news_detail.html">公開講座「UnityでつくるiOSアプリ」受講生募集</a>
-              </div>
-            </div>
-            <div class="news_post_small">
-              <div class="news_post_meta">
-                <ul>
-                  <li><a href="news_detail.html">2022/05/02</a></li>
-                </ul>
-              </div>
-              <div class="news_post_small_title">
-                <a href="news_detail.html">新規カリキュラム「Pythonコース」登場!</a>
-              </div>
-            </div>
-            <div class="news_post_small">
-              <div class="news_post_meta">
-                <ul>
-                  <li><a href="news_detail.html">2022/05/02</a></li>
-                </ul>
-              </div>
-              <div class="news_post_small_title">
-                <a href="news_detail.html">新規カリキュラム「Pythonコース」登場!</a>
-              </div>
-            </div>
+           <?php
+           $args = array(
+            'post_type'   =>'post',
+            'category_name'  =>'news',
+            'posts_per_page' => 3,
+           );
+           $posts =get_posts($args);
+           ?>
+
+           <!-- ループ処理 -->
+           <?php foreach($posts as $post): ?>
+           <?php setup_postdata($post); ?>
+           <div class="news_post_small">
+            <div class="news_post_meta">
+              <ul>
+                <li>
+                  <a href="<?php echo get_permalink(); ?>
+                   <?php echo get_the_date(); ?> 
+                  </a>
+                </li>
+              </ul>
+           </div>
+           <div class="news_post_small_title">
+            <a href="<?php the_permalink(); ?>">
+              <?php the_title(); ?>
+            </a>
+           </div>
+           </div>
+
+           <?php endforeach; ?>
+           <?php wp_reset_postdata(); ?>
+            
           </div>
           <!-- ニュースここまで -->
 
