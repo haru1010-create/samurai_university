@@ -94,7 +94,7 @@
            ?>
 
            <!-- ループ処理 -->
-           <?php foreach($posts as $post); ?>
+           <?php foreach($posts as $post): ?>
            <?php setup_postdata($post); ?>
            <div class="news_post_small">
             <div class="news_post_meta">
@@ -112,7 +112,6 @@
             </a>
            </div>
            </div>
-
            <?php endforeach; ?>
            <?php wp_reset_postdata(); ?>
             
