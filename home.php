@@ -140,9 +140,13 @@
              <div class="col-lg-3 col-md-4 col-sx-12">
                     <div class="calendar_border">
                       <div class="calendar_border_1">
-                        <div class="calendar_month">OCT</div>
+                        <div class="calendar_month">
+                        <?php echo post_custom('month'); ?>
+                      </div>
                         <div class="calendar_day">
-                          <span>8</span>
+                          <span>
+                            <?php echo post_custom('day'); ?>
+                          </span>
                         </div>
                       </div>
                     </div>
