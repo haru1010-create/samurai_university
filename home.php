@@ -184,10 +184,58 @@
 
           </div>
           <!-- イベントここまで -->
+
+          <!-- 卒業生の声 -->
+          <div class="col-lg-6 col-md-6 col-sx-12 news_col">
+            <div class="home_title">GRADUATES</div>
+            <div class="home_title_sub">卒業生の声</div>
+            <?php
+            // 取得したい投稿記事の条件を引数として渡す
+            $args = array(
+              // 投稿タイプ
+              'post_type' => 'post',
+              // カテゴリ名
+              'category_name' => 'graduates',
+              // 1ページに表示する投稿数
+              'posts_per_page' => 2,
+            );
+            // データの取得
+            $posts = get_posts($args);
+            ?>
+
+            <?php foreach($posts as $post): ?>
+            <?php setup_postdata($post); ?>
+            <div class="news_post_small">
+              <div class="news_post_meta">
+                <ul>
+                  <li>
+                    <!-- aタグで投稿記事へのリンク作成 -->
+                    <a href="<?php echo get_permalink(); ?>">
+                      <!-- 日付出力 -->
+                       <?php echo get_the_date(); ?>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <div class="news_post_small_title">
+                <!-- aタグで投稿記事へのリンク作成 -->
+                <a href="<?php the_permalink(); ?>">
+                  <!-- 投稿記事のタイトル表示 -->
+                  <?php the_title(); ?>
+                </a>
+              </div>
+            </div>
+
+            <?php endforeach; ?>
+            <?php wp_reset_postdata(); ?>
+
+          </div>
+          <!-- 卒業生の声ここまで -->
+
         </div>
       </div>
     </div>
-    <!-- ニュースとイベントここまで -->
+    <!-- ニュースとイベント、卒業生の声はここまで -->
 
     <!-- コース -->
     <div class="courses">
