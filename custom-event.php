@@ -15,8 +15,13 @@ Template Post Type: post
       <div class="breadcrumbs_container">
         <div class="image_header">
           <div class="header_info">
-            <div>Event</div>
-            <div>イベント</div>
+          <?php
+            $cat = get_the_category();
+            $catslug = $cat[0]->slug;
+            $catname = $cat[0]->cat_name;
+          ?>
+          <div><?php echo $catslug; ?></div>
+          <div><?php echo $catname; ?></div>
           </div>
         </div>
       </div>
@@ -32,7 +37,7 @@ Template Post Type: post
             <div class="tab_panels">
               <!-- Description -->
               <div class="tab_panel">
-                <div class="tab_panel_title">イベント</div>
+                <div class="tab_panel_title"><?php echo $catname; ?></div>
                 <div class="tab_panel_content">
                   <div class="tab_panel_text">
                     <div class="news_posts_small">
@@ -50,7 +55,7 @@ Template Post Type: post
                         </div>
                         <div class="col-lg-10 col-md-10 col-sx-12">
                           <div class="news_post_small_header">
-                            <img src="<?php echo get_template_directory_uri();?>/images/tags-solid.png" alt="" /> イベント
+                            <img src="<?php echo get_template_directory_uri();?>/images/tags-solid.png" alt="" /> <?php echo $catname; ?>
                           </div>
                           <div class="news_detail_title">
                             <?php the_title(); ?>
@@ -62,7 +67,13 @@ Template Post Type: post
                             </div>
                             <div>
                               <img src="<?php echo get_template_directory_uri(); ?>/images/yen-sign-solid.png" alt="" />
-                              <span>参加費：<?php echo post_custom('fee'); ?></span>
+                              <span>参加費：<?php
+                                if(post_custom('fee')== 0) {
+                                  echo '無料';
+                                }else {
+                                  echo '¥'. number_format(post_custom('fee'));
+                                }
+                                ?></span>
                             </div>
                           </div>
                           <div class="news_post_meta">
