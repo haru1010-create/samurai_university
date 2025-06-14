@@ -13,6 +13,7 @@
                         'title_li' => '',
                     );
                     wp_list_categories( $args );
+                    ?>
                 </ul>
               </div>
             </div>
@@ -23,15 +24,16 @@
               </div>
               <div class="sidebar_categories">
                 <ul>
-                  <?php$args = array(
+                  <?php
+                    $args = array(
                     'posts_per_page' => 3
                   );
                   $posts = get_posts( $args );
                   foreach ($posts as $post):
-                    setup_postdata($post);
-                    ?>
-                    <li>
-                        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+                  setup_postdata($post);
+                  ?>
+                  <li>
+                    <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
                   </li>
                   <?php
                   endforeach;
