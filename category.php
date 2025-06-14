@@ -40,11 +40,23 @@
                           <div class="calendar_news_border">
                             <div class="calendar_news_border_1">
                               <div class="calendar_month">
-                                <?php echo get_post_time('F'); ?>
+                                <?php
+                                if( is_category('event')):
+                                  echo post_custom('month');
+                                else:
+                                  echo get_post_time('F');
+                                endif;
+                              ?>
                               </div>
                               <div class="calendar_day">
                                 <span>
-                                  <?php echo get_the_date('d'); ?>
+                                  <?php
+                                  if( is_category('event')):
+                                    echo post_custom('day');
+                                  else:
+                                    echo get_the_date('d');
+                                  endif;
+                                  ?>
                                 </span>
                               </div>
                             </div>
