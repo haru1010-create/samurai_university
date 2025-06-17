@@ -21,7 +21,7 @@ Template Post Type: post
             $catname = $cat[0]->cat_name;
           ?>
           <div><?php echo $catslug; ?></div>
-          <div><?php echo $catname; ?></div>
+          <!-- <div><?php echo $catname; ?></div> -->
           </div>
         </div>
       </div>
@@ -38,12 +38,11 @@ Template Post Type: post
               <!-- Description -->
               <div class="tab_panel">
                 <div class="tab_panel_title"><?php echo $catname; ?></div>
-                <div class="tab_panel_content">
-                  <div class="tab_panel_text">
-                    <div class="news_posts_small">
-                      <div class="row">
-                       <!-- 削除済み -->
-                        <div class="col-lg-12 col-md-12 col-sx-12">
+                  <div class="tab_panel_content">
+                    <div class="tab_panel_text">
+                      <div class="news_posts_small">
+                        <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sx-12">
                           <div class="news_post_small_header">
                             <img src="<?php echo get_template_directory_uri();?>/images/tags-solid.png" alt="" /> <?php echo $catname; ?>
                           </div>
@@ -51,19 +50,21 @@ Template Post Type: post
                             <?php the_title(); ?>
                           </div>
                           <div class="news_time">
-                          </div>
-                            <span>卒業年：<?php echo post_custom('graduates_year'); ?> </span>
+                            <div>
+                              <span>卒業年：<?php echo post_custom('graduate_year');?></span>
                             </div>
                           </div>
-                        <div class="news_post_meta">
-                          <?php the_content(); ?>
+                          <div class="news_post_meta">
+                            <?php the_content(); ?>
+                          </div>
+                          </div>
+
                           <hr />
+                          <!-- </div>11 -->
                           <div class="social_share">
                             <img src="<?php echo get_template_directory_uri(); ?>/images/facebook-square-brands.png" alt="" />
                             <img src="<?php echo get_template_directory_uri(); ?>/images/twitter-square-brands.png" alt="" />
-                          </div>
                         </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -71,8 +72,9 @@ Template Post Type: post
             </div>
           </div>
         </div>
-      <?php endwhile; ?>
-    <?php endif; ?>
+      </div>
+  <?php endwhile; ?>
+<?php endif; ?>
 
         <!--  Sidebar -->
         <div class="col-lg-4" style="background-color: #2b7b8e33">
